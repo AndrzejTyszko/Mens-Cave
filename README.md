@@ -1,5 +1,4 @@
-Men's Cave - Platforma Wynajmu Warsztatów 🏠🚜
-
+Men's Cave - Platforma Wynajmu Warsztatów 
 
 
 📄 Opis Projektu
@@ -84,20 +83,20 @@ Moderacja treści, zgłoszeń
 
 Podgląd użytkowników, rezerwacji i opinii
 
-Eksport danych (opcjonalnie CSV / PDF)
 
-🌟 Przykładowe widoki (GIFs)
+🌟 Przykładowe widoki
 
 Rejestracja i logowanie
-
-
+Picture
+Picture
+Picture
 
 Dodawanie warsztatu
 
 
 
 Rezerwacja i komentarz
-
+Picture
 
 
 📦 Uruchomienie projektu
@@ -135,5 +134,5 @@ listowanie warsztatów.
 
 MIT
 
-Projekt stworzony jako praca dyplomowa przez [Andrzej Tyszko] ✨
+Projekt stworzony jako praca dyplomowa przez [Andrzej Tyszko]
 
