@@ -10,8 +10,8 @@ urlpatterns = [
     
 
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),  
-    path("admin/", staff_member_required(admin.site.urls)),  
+    path('api/', include('api.urls')),  # dodaj tę linię
+    path("admin/", staff_member_required(admin.site.urls)),  # Tylko dla staff!
 
 
     # JWT Auth

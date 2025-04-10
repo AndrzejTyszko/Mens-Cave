@@ -10,7 +10,7 @@ import Login from '../pages/Login.vue'
 import AddWorkshop from '../pages/AddWorkshop.vue'
 import Profile from '../pages/Profile.vue'
 import Booking from '../pages/Booking.vue'
-
+import EditWorkshop from '../pages/EditWorkshop.vue'
 
 
 const router = createRouter({
@@ -23,8 +23,8 @@ const router = createRouter({
     { path: '/register', name: 'Register', component: Register },
     { path: '/login', name: 'Login', component: Login },
     { path: '/booking/:id', name: 'Booking', component: Booking },
-    { path: '/profile', component: Profile }
-
+    { path: '/profile', component: Profile },
+    {path: '/my-workshops/edit/:id', name: 'EditWorkshop', component: EditWorkshop,meta: { requiresAuth: true }},
 
   ],
 })

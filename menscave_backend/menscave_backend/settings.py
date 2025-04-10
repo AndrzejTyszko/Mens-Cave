@@ -56,12 +56,12 @@ ROOT_URLCONF = 'menscave_backend.urls'
 
 # Konfiguracja CORS
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  #
+    "http://localhost:3000",  # Jeśli używasz lokalnego React Native
     "https://mojadomena.com",
     "http://127.0.0.1:8000",
     "http://localhost:8081",
     "http://localhost:5173"
-   
+    # Dodaj tutaj adres produkcyjny frontendowej aplikacji
 ]
 
 CORS_ALLOW_METHODS = [

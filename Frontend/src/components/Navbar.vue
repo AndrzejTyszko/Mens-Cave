@@ -93,7 +93,14 @@
     <transition enter-active-class="transition-all duration-300" leave-active-class="transition-all duration-300" enter-from-class="opacity-0 max-h-0" leave-to-class="opacity-0 max-h-0">
       <div v-if="mobileMenuOpen" class="md:hidden bg-white border-t">
         <div class="px-4 py-3 space-y-2">
-          <router-link v-for="link in mobileLinks" :key="link.path" :to="link.path" class="mobile-link" active-class="text-blue-600 bg-blue-50" @click="mobileMenuOpen = false">
+          <router-link
+            v-for="link in mobileLinks"
+            :key="link.path"
+            :to="link.path"
+            class="mobile-link"
+            active-class="text-blue-600 bg-blue-50"
+            @click="mobileMenuOpen = false"
+          >
             {{ link.name }}
           </router-link>
         </div>
@@ -101,11 +108,11 @@
     </transition>
   </header>
 </template>
+
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { logoutUser } from '../services/auth.js'
-
 
 const router = useRouter()
 const isLoggedIn = ref(!!localStorage.getItem('token'))
@@ -113,7 +120,10 @@ const mobileMenuOpen = ref(false)
 const userMenuOpen = ref(false)
 const logoHover = ref(false)
 
-
+const mainLinks = ref([
+  { name: 'Strona Główna', path: '/' },
+  { name: 'Warsztaty', path: '/workshops' }
+])
 
 const mobileLinks = computed(() => [
   ...mainLinks.value,
@@ -133,7 +143,6 @@ const userInitial = computed(() => {
   try {
     const token = localStorage.getItem('token')
     if (!token) return 'U'
-
     const payload = JSON.parse(atob(token.split('.')[1]))
     return payload?.username?.charAt(0).toUpperCase() || 'U'
   } catch {
@@ -141,12 +150,11 @@ const userInitial = computed(() => {
   }
 })
 
-
 function handleLogout() {
   logoutUser()
   isLoggedIn.value = false
-  mobileMenuOpen.value = false
   userMenuOpen.value = false
+  mobileMenuOpen.value = false
   router.push('/login')
 }
 </script>

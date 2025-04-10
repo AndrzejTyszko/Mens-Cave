@@ -114,10 +114,10 @@
     try {
         await loginUser({ username: username.value, password: password.value })
 
-//  DEBUG: Sprawdź, czy token został zapisany
+// 🧪 DEBUG: Sprawdź, czy token został zapisany
 console.log('🔐 Token w localStorage:', localStorage.getItem('token'))
 
-// Jeśli wszystko OK, przeładuj stronę, aby navbar się odświeżył
+// 💡 Jeśli wszystko OK, przeładuj stronę, aby navbar się odświeżył
 await router.push('/')  // najpierw przekieruj
 setTimeout(() => {
   window.location.reload()  // potem przeładuj — jeśli musisz

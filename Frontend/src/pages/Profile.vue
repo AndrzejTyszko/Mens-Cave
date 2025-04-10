@@ -54,7 +54,7 @@
           class="border border-gray-200 rounded-xl p-5 bg-gray-50 shadow-sm hover:shadow-md transition"
         >
           <h3 class="text-lg font-semibold text-gray-800 mb-2">
-            🛠 {{ getWorkshopName(res.workshop) }}
+            🛠 {{ getWorkshopName(res.workshop ) }}
           </h3>
           <p class="text-sm text-gray-600">
             📅 <strong>Od:</strong> {{ formatDate(res.start_datetime) }}<br />
@@ -154,7 +154,7 @@ const loadingReservations = ref(false)
 const loadingWorkshops = ref(false)
 const workshopMap = ref({})
 
-// Statystyki
+// 🔸 Statystyki
 const averageRating = computed(() => {
   const myWorkshopIds = userWorkshops.value.map(w => w.id)
   const relatedReviews = allReviews.value.filter(r => myWorkshopIds.includes(r.workshop?.id || r.workshop))
@@ -167,7 +167,7 @@ const ownerIncome = computed(() => {
   return reservationsForOwner.value.reduce((sum, r) => sum + Number(r.total_price), 0)
 })
 
-//  JWT decoding (do pobrania ID)
+// 🔸 JWT decoding (do pobrania ID)
 function parseJwt(token) {
   try {
     return JSON.parse(atob(token.split('.')[1]))
@@ -176,7 +176,7 @@ function parseJwt(token) {
   }
 }
 
-//  Inicjalizacja
+// 🔸 Inicjalizacja
 onMounted(async () => {
   const token = localStorage.getItem('token')
   const decoded = token ? parseJwt(token) : null
@@ -189,7 +189,7 @@ onMounted(async () => {
   }
 })
 
-//  API
+// 🔸 API
 async function fetchUserDetails(id) {
   try {
     const res = await apiClient.get(`/api/users/${id}/`)
@@ -243,7 +243,7 @@ async function fetchUserReviews() {
   }
 }
 
-// Helpers
+// 🔸 Helpers
 function hasUserReviewed(workshopId) {
   return userReviews.value.some(r => r.workshop === workshopId || r.workshop.id === workshopId)
 }

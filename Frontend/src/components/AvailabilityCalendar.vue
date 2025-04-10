@@ -16,14 +16,14 @@
   import apiClient from '../services/axios'
   import { useRoute } from 'vue-router'
   
-  const selectedRange = defineModel()
+  const selectedRange = defineModel() // pozwala v-model w rodzicu
   const route = useRoute()
   const availability = ref([])
   
   const config = ref({
     mode: 'range',
     minDate: 'today',
-    enable: [],
+    enable: [], // będzie uzupełnione z API
     dateFormat: 'Y-m-d H:i',
     enableTime: true,
     time_24hr: true,
@@ -36,7 +36,7 @@
         from: a.available_from,
         to: a.available_to,
       }))
-  
+      // przekształć do formatu flatpickr
       config.value.enable = availability.value.map(a => ({
         from: a.from,
         to: a.to,

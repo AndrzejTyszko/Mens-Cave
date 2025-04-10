@@ -5,7 +5,7 @@ function parseJwt(token) {
   try {
     return JSON.parse(atob(token.split('.')[1]))
   } catch (e) {
-    console.warn(' Nie udało się zdekodować tokena:', e)
+    console.warn('❗ Nie udało się zdekodować tokena:', e)
     return null
   }
 }

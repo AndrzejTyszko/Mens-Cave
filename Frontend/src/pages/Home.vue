@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-7xl mx-auto px-6 py-10 space-y-20">
-    <!--  Filtry i sortowanie -->
+    <!-- 🔎 Filtry i sortowanie -->
     <section class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-4 mb-8">
       <input
         v-model="searchName"
@@ -24,7 +24,7 @@
       </select>
     </section>
 
-    <!--  Lista warsztatów -->
+    <!-- 🚠 Lista warsztatów -->
     <section>
       <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Dostępne warsztaty</h2>
       <div v-if="loading" class="text-center text-gray-500">Ładowanie warsztatów...</div>
@@ -66,7 +66,7 @@
         </Transition>
       </div>
 
-      <!-- Paginacja -->
+      <!-- 📋 Paginacja -->
       <div v-if="totalPages > 1" class="flex justify-center mt-10 gap-2 flex-wrap">
         <button
           @click="goToPage(currentPage - 1)"
@@ -98,7 +98,7 @@
       </div>
     </section>
 
-    <!-- Modal szczegółów -->
+    <!-- 🌟 Modal szczegółów -->
     <div
       v-if="showModal"
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
@@ -178,7 +178,7 @@
       </div>
     </div>
 
-    <!-- Karuzela top warsztatów -->
+    <!-- ✨ Karuzela top warsztatów -->
     <section>
       <h2 class="text-xl font-semibold text-gray-700 mb-4 text-center">⭐ Najlepiej oceniane warsztaty</h2>
       <Swiper
@@ -199,7 +199,7 @@
       </Swiper>
     </section>
 
-    <!-- Stopka -->
+    <!-- 👣 Stopka -->
     <footer class="bg-gray-800 text-white py-8 mt-20 rounded-xl">
       <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
         <div class="text-sm">© {{ new Date().getFullYear() }} Men’s Cave. Wszelkie prawa zastrzeżone.</div>

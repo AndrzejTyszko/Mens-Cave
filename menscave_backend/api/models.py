@@ -25,12 +25,6 @@ class WorkshopImage(models.Model):
     image = models.ImageField(upload_to='workshop_photos/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
-class Availability(models.Model):
-    workshop = models.ForeignKey(Workshop, on_delete=models.CASCADE, related_name="availability")
-    available_from = models.DateTimeField()
-    available_to = models.DateTimeField()
-
-
 
 class Reservation(models.Model):
     workshop = models.ForeignKey(Workshop, on_delete=models.CASCADE)
@@ -57,3 +51,8 @@ class Message(models.Model):
     content = models.TextField()
     sent_at = models.DateTimeField(auto_now_add=True)
     read_at = models.DateTimeField(null=True, blank=True)
+
+class Availability(models.Model):
+    workshop = models.ForeignKey(Workshop, on_delete=models.CASCADE, related_name="availability")
+    available_from = models.DateTimeField()
+    available_to = models.DateTimeField()

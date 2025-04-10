@@ -47,14 +47,24 @@ class WorkshopSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class NestedWorkshopSerializer(serializers.ModelSerializer):
+    owner = UserSerializer(read_only=True)
+
+    class Meta:
+        model = Workshop
+        fields = ['id', 'name', 'owner']
+
 class ReservationSerializer(serializers.ModelSerializer):
     renter = UserSerializer(read_only=True)
-    workshop = serializers.PrimaryKeyRelatedField(queryset=Workshop.objects.all())
+    workshop = NestedWorkshopSerializer(read_only=True)
+    workshop_id = serializers.PrimaryKeyRelatedField(
+        queryset=Workshop.objects.all(), write_only=True, source='workshop'
+    )
 
     class Meta:
         model = Reservation
-        fields = '__all__'
-        read_only_fields = ['__all__']
+        fields = ['id', 'workshop', 'workshop_id', 'renter', 'start_datetime', 'end_datetime', 'total_price', 'created_at']
+
 
 
 class MessageSerializer(serializers.ModelSerializer):

@@ -21,7 +21,7 @@ from django.utils.decorators import method_decorator
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 class ObtainTokenView(TokenObtainPairView):
-    pass 
+    pass  # Możesz dodać własną logikę w przyszłości
 
 
 @method_decorator(ratelimit(key="ip", rate="5/m", method="POST", block=True), name="dispatch")
@@ -32,7 +32,7 @@ class RegisterUserAPIView(generics.CreateAPIView):
 
 @method_decorator(ratelimit(key="ip", rate="10/m", method="POST", block=True), name="dispatch")
 class ObtainTokenView(TokenObtainPairView):
-    pass  
+    pass  # Logowanie JWT
 
 
 
@@ -72,19 +72,25 @@ class WorkshopListCreateAPIView(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 class ReservationRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     def get_queryset(self):
-        return Reservation.objects.filter(renter=self.request.user) 
+        user = self.request.user
+        return Reservation.objects.filter(
+        models.Q(renter=user) | models.Q(workshop__owner=user)
+    )
 
 class ReservationListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = ReservationSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return Reservation.objects.filter(renter=self.request.user)
+        user = self.request.user
+        return Reservation.objects.filter(
+        models.Q(renter=user) | models.Q(workshop__owner=user)
+    )
+
 
     def perform_create(self, serializer):
         start = serializer.validated_data['start_datetime']
@@ -101,17 +107,10 @@ class ReservationListCreateAPIView(generics.ListCreateAPIView):
         serializer.save(renter=self.request.user, total_price=total_price)
 
 
-class ReservationRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = ReservationSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
-
-    def get_queryset(self):
-        return Reservation.objects.filter(renter=self.request.user)
-
 def calculate_hours(start, end):
     duration = end - start
     hours = Decimal(duration.total_seconds()) / Decimal(3600)
-    return hours.quantize(Decimal('0.01')) 
+    return hours.quantize(Decimal('0.01'))  # zaokrąglenie do 2 miejsc po przecinku
 
 
 
@@ -129,7 +128,7 @@ class ReviewListCreateAPIView(generics.ListCreateAPIView):
         workshop = serializer.validated_data.get('workshop')
         user = self.request.user
 
-        
+        # ✅ Zabezpieczenie: tylko jedna recenzja na warsztat
         already_exists = Review.objects.filter(workshop=workshop, user=user).exists()
         if already_exists:
             raise serializers.ValidationError("Już wystawiłeś opinię dla tego warsztatu.")
