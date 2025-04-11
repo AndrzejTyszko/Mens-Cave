@@ -86,16 +86,19 @@ Podgląd użytkowników, rezerwacji i opinii
 
 🌟 Przykładowe widoki
 
-Rejestracja i logowanie
+Rejestracja i logowanie:
+
 ![image](https://github.com/user-attachments/assets/6f11a3a5-fd49-4d1b-8724-bf876c277754)
 
 
-Dodawanie warsztatu
+Dostęne warsztaty:
+
 ![image](https://github.com/user-attachments/assets/013b6d36-82f6-4a3c-9d92-316c9103e803)
 
 
 
-Rezerwacja i komentarz
+Rezerwacja i komentarz:
+
 ![image](https://github.com/user-attachments/assets/90c8bfc1-3bc3-4ad5-9591-5b4257a53f1f)
 ![image](https://github.com/user-attachments/assets/c93d73ea-6c00-470f-948e-48a9b0794b96)
 
