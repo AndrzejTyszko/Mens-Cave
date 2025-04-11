@@ -97,8 +97,12 @@ Dostęne warsztaty:
 
 
 
-Rezerwacja i komentarz:
+Rezerwacja
 
+![image](https://github.com/user-attachments/assets/4f84171c-c4f4-4e59-8ad3-d43c50da92ac)
+![image](https://github.com/user-attachments/assets/f9f6a7f9-fdb0-4d5b-863e-83509d7a7f6e)
+
+Profil użytkownika
 ![image](https://github.com/user-attachments/assets/90c8bfc1-3bc3-4ad5-9591-5b4257a53f1f)
 ![image](https://github.com/user-attachments/assets/c93d73ea-6c00-470f-948e-48a9b0794b96)
 
