@@ -97,6 +97,8 @@ Dodawanie warsztatu
 
 Rezerwacja i komentarz
 ![image](https://github.com/user-attachments/assets/90c8bfc1-3bc3-4ad5-9591-5b4257a53f1f)
+![image](https://github.com/user-attachments/assets/c93d73ea-6c00-470f-948e-48a9b0794b96)
+
 
 
 📦 Uruchomienie projektu
